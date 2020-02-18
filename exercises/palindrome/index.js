@@ -7,6 +7,22 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+function palindrome(str) {
+    // Reverse the string
+    const reversed_str = str.split('').reverse().join('');
+    // If the reversed string equals the input, it will return true
+    return reversed_str === str;
+}
+
+function palindrome_every_helper(str) {
+    // For every character and its attached index inside this split string...
+    return str.split('').every((char, idx) => { // Potential Gotcha: gotta return method or it won't do anything
+        // Return a comparison operator to test whether current character (char) is same as the one on opposite side
+        return char === str[str.length - idx - 1]
+    })
+}
+
+console.log(palindrome_every_helper('ABCBA'));
+console.log(palindrome_every_helper('ABCDE'));
 
 module.exports = palindrome;
