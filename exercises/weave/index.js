@@ -24,6 +24,22 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+    // Initialize a new queue to store both inputs and assign to combined
+    const combined = new Queue();
+    // While we can "peek" and see an element at the end of either queue...
+    while (sourceOne.peek() || sourceTwo.peek()) {
+        // If we can peek an item on source one (must confirm due to OR above -- one or the other could be undefined)...
+        if (sourceOne.peek()) {
+            // Add it to our combined queue
+            combined.add(sourceOne.remove())
+        }
+        // Repeat the same process for our second source queue
+        if (sourceTwo.peek()) {
+            combined.add(sourceTwo.remove());
+        }
+    }
+    return combined;
+}
 
 module.exports = weave;
