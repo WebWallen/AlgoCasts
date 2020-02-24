@@ -11,6 +11,25 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-function fromLast(list, n) {}
+function fromLast(list, n) {
+    // Assign the same counter variables from circular/midpoint
+    let slow = list.head;
+    let fast = list.head;
+    // While the input n is greater than 0...
+    while (n > 0) {
+        // Move fast n-spaces forward
+        fast = fast.next;
+        // Decrement n until we've reached n-position
+        n--;
+        // Note: fast is now n-spaces in front of slow!
+    }
+    while (fast.next) {
+        // Increment both slow and fast by one
+        slow = slow.next;
+        fast = fast.next;
+    }
+    // Return slow (has to be n-spaces behind fast now)
+    return slow;
+}
 
 module.exports = fromLast;
