@@ -141,7 +141,7 @@ class LinkedList {
         previous.next = current;
 
         // Out of bounds
-        if (!previous || previous.next); 
+        if (!previous || previous.next) return;
     }
 }
 
